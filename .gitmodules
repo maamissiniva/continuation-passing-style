@@ -1,0 +1,3 @@
+[submodule "external/consumer-of-consumer"]
+	path = external/consumer-of-consumer
+	url = https://github.com/maamissiniva/consumer-of-consumer.git

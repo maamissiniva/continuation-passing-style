@@ -1,0 +1,36 @@
+
+plugins {
+  id 'java-library'
+  id 'eclipse'
+}
+
+eclipse.project.name = 'maamissiniva-continuation-passing-style'
+
+dependencies {
+
+  compile project(':external:consumer-of-consumer')
+  
+  testImplementation 'junit:junit:4.12'
+  
+}
+
+repositories {
+  jcenter()
+}
+
+version = '0.1.0'
+
+jar {
+  manifest {
+    attributes('Implementation-Title':   project.name,
+               'Implementation-Version': project.version)
+  }
+}
+
+// All in one jar so it can be used simply with 'java -cp'
+task dist(type: Jar, dependsOn: build) {
+    from files(sourceSets.main.output.classesDir)
+    from files(sourceSets.main.output.resourcesDir)
+    from {configurations.compile.collect {zipTree(it)}}
+}
+
