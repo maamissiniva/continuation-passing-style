@@ -4,7 +4,8 @@ plugins {
     id 'eclipse'
 }
 
-eclipse.project.name = 'maamissiniva-continuation-passing-style'
+eclipse.project.name = 'external-maamissiniva-continuation-passing-style'
+java.toolchain.languageVersion.set(JavaLanguageVersion.of(8))
 
 dependencies {
 
