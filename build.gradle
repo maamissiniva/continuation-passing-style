@@ -1,36 +1,30 @@
 
 plugins {
-  id 'java-library'
-  id 'eclipse'
+    id 'java-library'
+    id 'eclipse'
 }
 
 eclipse.project.name = 'maamissiniva-continuation-passing-style'
 
 dependencies {
 
-  compile project(':external:consumer-of-consumer')
+    implementation 'io.github.maamissiniva:consumer-of-consumer:0.1.0'
   
-  testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
   
 }
 
 repositories {
-  jcenter()
+    mavenCentral()
 }
 
 version = '0.1.0'
 
 jar {
-  manifest {
-    attributes('Implementation-Title':   project.name,
-               'Implementation-Version': project.version)
-  }
+    manifest {
+        attributes('Implementation-Title':   project.name,
+                   'Implementation-Version': project.version)
+    }
 }
 
-// All in one jar so it can be used simply with 'java -cp'
-task dist(type: Jar, dependsOn: build) {
-    from files(sourceSets.main.output.classesDir)
-    from files(sourceSets.main.output.resourcesDir)
-    from {configurations.compile.collect {zipTree(it)}}
-}
 
